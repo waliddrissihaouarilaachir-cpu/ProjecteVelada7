@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Velada del Año - Combats</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .combats-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .combats-header h2 {
+      font-size: 3.2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      background: linear-gradient(180deg, #FFFFFF 20%, #FF4D6D 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 6px 20px rgba(230, 57, 70, 0.35));
+      margin-bottom: 0.5rem;
+    }
+
+    .combats-header .subtitle {
+      font-size: 1.15rem;
+      color: #D0D4E0;
+    }
+
+    .main-event-banner {
+      background: linear-gradient(135deg, rgba(45, 34, 15, 0.85) 0%, rgba(20, 16, 24, 0.96) 50%, rgba(45, 18, 25, 0.85) 100%);
+      border: 2px solid rgba(255, 209, 102, 0.55);
+      border-radius: 26px;
+      padding: 36px 30px;
+      margin-bottom: 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(255, 209, 102, 0.18);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .main-event-banner:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent-gold);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(255, 209, 102, 0.3);
+    }
+
+    .main-event-banner::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 450px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(255, 209, 102, 0.22) 0%, transparent 70%);
+      filter: blur(35px);
+      pointer-events: none;
+    }
+
+    .main-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #FFE29A 0%, #FFD166 50%, #F4A261 100%);
+      color: #09090D;
+      font-size: 0.85rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      border-radius: 50px;
+      box-shadow: 0 0 20px rgba(255, 209, 102, 0.45);
+      margin-bottom: 24px;
+    }
+
+    .main-matchup {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 55px;
+      margin: 10px 0 24px;
+      flex-wrap: wrap;
+    }
+
+    .main-fighter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 180px;
+    }
+
+    .main-fighter img {
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent-gold);
+      box-shadow: 0 0 30px rgba(255, 209, 102, 0.45);
+      transition: transform 0.35s ease;
+    }
+
+    .main-event-banner:hover .main-fighter img {
+      transform: scale(1.07);
+    }
+
+    .main-fighter h3 {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      margin-top: 14px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .main-fighter span {
+      font-size: 0.82rem;
+      color: var(--accent-gold);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .main-vs {
+      font-size: 2.6rem;
+      font-weight: 900;
+      font-style: italic;
+      background: linear-gradient(135deg, #FFE29A 0%, #FFD166 50%, #E63946 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 4px 15px rgba(255, 209, 102, 0.4));
+    }
+
+    .main-time {
+      display: inline-block;
+      padding: 7px 22px;
+      border-radius: 50px;
+      background: rgba(255, 209, 102, 0.12);
+      border: 1px solid rgba(255, 209, 102, 0.35);
+      color: var(--accent-gold);
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      margin-bottom: 0;
+    }
+
+    .undercard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .matchup {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin: 18px 0;
+      width: 100%;
+    }
+
+    .fighter-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 42%;
+    }
+
+    .fighter-avatar {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary-red);
+      box-shadow: 0 0 18px rgba(230, 57, 70, 0.45);
+      display: block;
+    }
+
+    .fighter-box h3 {
+      font-size: 0.96rem;
+      text-align: center;
+      color: #FFFFFF;
+      margin-top: 10px;
+      margin-bottom: 0;
+      white-space: nowrap;
+    }
+
+    .vs {
+      font-weight: 900;
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--primary-red);
+    }
+
+    @media (max-width: 920px) {
+      .undercard-grid {
+        grid-template-columns: 1fr;
+      }
+      .main-matchup {
+        gap: 20px;
+      }
+      .main-fighter {
+        width: 130px;
+      }
+      .main-fighter img {
+        width: 105px;
+        height: 105px;
+      }
+      .main-fighter h3 {
+        font-size: 1.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="img/LOGOVELADA.png" alt="Logo La Velada VII" class="logo-img">
+      <span class="logo-text">LA VELADA VII</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inici</a></li>
+        <li><a href="combats.html" class="active">Combats</a></li>
+        <li><a href="entrades.html">Entrades</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="combats-container">
+      <div class="combats-header">
+        <h2>Cartellera de Combats</h2>
+        <p class="subtitle">Descobreix els enfrontaments oficials d'aquesta edició</p>
+      </div>
+
+      <article class="main-event-banner combat-card">
+        <span class="main-badge">★ Combat Principal · Main Event ★</span>
+        <div class="main-matchup">
+          <div class="main-fighter">
+            <img src="img/Messi.jpg" alt="Messi">
+            <h3>Messi</h3>
+            <span>Cantonada Vermella</span>
+          </div>
+          <span class="main-vs">VS</span>
+          <div class="main-fighter">
+            <img src="img/Ronaldo.jpg" alt="Ronaldo">
+            <h3>Ronaldo</h3>
+            <span>Cantonada Daurada</span>
+          </div>
+        </div>
+        <p class="main-time">22:00 h · Tancament de la Vetllada</p>
+      </article>
+
+      <div class="undercard-grid">
+        <article class="combat-card">
+          <span class="combat-num">COMBAT 1</span>
+          <div class="matchup">
+            <div class="fighter-box">
+              <img src="img/Pedri.jpg" alt="Pedri" class="fighter-avatar">
+              <h3>Pedri</h3>
+            </div>
+            <span class="vs">VS</span>
+            <div class="fighter-box">
+              <img src="img/Bellingham.jpg" alt="Bellingham" class="fighter-avatar">
+              <h3>Bellingham</h3>
+            </div>
+          </div>
+          <p class="combat-time">18:30 h</p>
+        </article>
+
+        <article class="combat-card">
+          <span class="combat-num">COMBAT 2</span>
+          <div class="matchup">
+            <div class="fighter-box">
+              <img src="img/Lamine.webp" alt="Lamine Yamal" class="fighter-avatar">
+              <h3>Lamine Yamal</h3>
+            </div>
+            <span class="vs">VS</span>
+            <div class="fighter-box">
+              <img src="img/Doué.jpg" alt="Doué" class="fighter-avatar">
+              <h3>Doué</h3>
+            </div>
+          </div>
+          <p class="combat-time">19:30 h</p>
+        </article>
+
+        <article class="combat-card">
+          <span class="combat-num">COMBAT 3</span>
+          <div class="matchup">
+            <div class="fighter-box">
+              <img src="img/mbappe.jpg" alt="Mbappé" class="fighter-avatar">
+              <h3>Mbappé</h3>
+            </div>
+            <span class="vs">VS</span>
+            <div class="fighter-box">
+              <img src="img/haaland.jpg" alt="Haaland" class="fighter-avatar">
+              <h3>Haaland</h3>
+            </div>
+          </div>
+          <p class="combat-time">20:30 h</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 WDHL Solutions. Projecte de Walid fictici.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
